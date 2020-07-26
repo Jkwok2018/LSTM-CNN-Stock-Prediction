@@ -56,4 +56,5 @@ print(dfValid)
 
 y_pred = model.predict(datagen_valid)
 print("this is prediction")
-print(y_pred)
+print(len(y_pred))
+print(len(y_pred[0]))
