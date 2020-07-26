@@ -49,5 +49,11 @@ dfValid.reset_index(inplace=True, drop=True)
 datagen_train = StockDataGenerator(dfTrain, "SPY", chart_indicators, ts_indicators, 5, 30, 128, single_output=True)
 datagen_valid = StockDataGenerator(dfValid, "SPY", chart_indicators, ts_indicators, 5, 30, 128, single_output=True)
 
-model.fit_generator(datagen_train, steps_per_epoch=len(datagen_train), epochs=20, validation_data=datagen_valid, callbacks=[checkpoint, tensorboard])
+model.fit_generator(datagen_train, steps_per_epoch=len(datagen_train), epochs=1, validation_data=datagen_valid, callbacks=[checkpoint, tensorboard])
 
+print("this is dfValid")
+print(dfValid)
+
+y_pred = model.predict(datagen_valid)
+print("this is prediction")
+print(y_pred)

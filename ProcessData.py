@@ -127,11 +127,13 @@ def generate_chart(df, symbol, window, start_idx, end_idx, indicators=[], overwr
                                          opacity=1)
         fig.append_trace(fig_candlestick, row=1, col=1)
         
+        # bollinger bands: help determine whether prices are high or low on a relative basis
         if "bbands" in indicators:
             fig.add_trace(go.Scatter(y=df_window["upperband"], mode="lines", line_color="grey"), row=1, col=1)
             fig.add_trace(go.Scatter(y=df_window["middleband"], fill="tonexty", mode="lines", line_color="grey"), row=1, col=1)
             fig.add_trace(go.Scatter(y=df_window["lowerband"], fill="tonexty", mode="lines", line_color="grey"), row=1, col=1)
-             
+        
+        # Moving average convergence divergence
         if "macd" in indicators:
             fig.add_trace(go.Scatter(y=df_window["macd"], mode="lines", line_color="magenta"), row=2, col=1)
             fig.add_trace(go.Scatter(y=df_window["macdsignal"], mode="lines", line_color="yellow"), row=2, col=1)
