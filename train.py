@@ -54,7 +54,14 @@ model.fit_generator(datagen_train, steps_per_epoch=len(datagen_train), epochs=1,
 print("this is dfValid")
 print(dfValid)
 
-y_pred = model.predict(datagen_valid)
-print("this is prediction")
-print(len(y_pred))
-print(len(y_pred[0]))
+y_pred1 = model.predict_generator(datagen_valid)
+print("this is prediction generator")
+print(y_pred1)
+print(len(y_pred1))
+print(len(y_pred1[0]))
+
+y_pred2 = model.evaluate_generator(datagen_valid)
+print("this is evaluate generate")
+print(y_pred2)
+print(len(y_pred2))
+print(len(y_pred2[0]))
